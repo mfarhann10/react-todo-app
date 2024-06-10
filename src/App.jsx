@@ -20,13 +20,22 @@ function App() {
       completed: false,
     },
   ])
+  const toggleCompleted = (todoId) =>{
+    const updateTodos = todos.map((todo) => {
+      if(todo.id === todoId){
+        todo.completed = !todo.completed
+      }
+      return todo
+    })
+    setTodos(updateTodos)
+}
 
   console.log(todos)
 
   return (
     <div style={{textAlign: 'center', padding: '12px'}}>
       <h1 style={{fontSize: '34px'}}>My Todo List</h1>
-      <Todos todos = {todos}/>
+      <Todos todos={todos} toggleCompleted={toggleCompleted} />
     </div>
   )
 }
